@@ -7,5 +7,5 @@ import logging
 
 def connect():
     os.chdir(config.adb_path)
-    connect_result = os.popen("adb connect 127.0.0.1:16384").read()
+    connect_result = os.popen(f"adb connect {config.global_adb_port}").read()
     logging.info('Connection result: %s', connect_result)

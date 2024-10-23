@@ -7,11 +7,12 @@ import config
 from datetime import timedelta
 from timeit import default_timer as timer
 
+import random
 
 # Take screenshot and return it in cv2 format
 def take_screenshot(name):
     subprocess.call(
-        ["adb", "-s", "127.0.0.1:16384", "exec-out", "screencap", "-p", ">", config.project_path+"\\"+name], stdout=subprocess.PIPE, shell=True)
+        ["adb", "-s", config.global_adb_port, "exec-out", "screencap", "-p", ">", config.project_path+"\\"+name], stdout=subprocess.PIPE, shell=True)
     return cv2.imread(config.project_path+'\\'+name)
 
 
@@ -42,20 +43,24 @@ def search_in_folder(folder_path, screenshot):
 
 # Click a position
 def click(x, y):
+    x += random.randint(-5,5)
+    y += random.randint(-3,3)
+    
     subprocess.call(
-        ["adb", "-s", "127.0.0.1:16384", "shell", "input", "tap", str(x), str(y)], stdout=subprocess.PIPE, shell=True)
+        ["adb", "-s", config.global_adb_port, "shell", "input", "tap", str(x), str(y)], stdout=subprocess.PIPE, shell=True)
 
 
 # Click a position with a tuple
 def click(position):
     subprocess.call(
-        ["adb", "-s", "127.0.0.1:16384", "shell", "input", "tap", str(position[0]), str(position[1])], stdout=subprocess.PIPE, shell=True)
+        ["adb", "-s", config.global_adb_port, "shell", "input", "tap", str(position[0] + random.randint(-5,5) ), 
+                                                    str(position[1] + random.randint(-5,5))], stdout=subprocess.PIPE, shell=True)
 
 
 # Swipe from a position a to a position b
 def drag(position_1, position_2):
     subprocess.call(
-        ["adb", "-s", "127.0.0.1:16384", "shell", "input", "touchscreen", "swipe", str(position_1[0]), str(position_1[1]), str(position_2[0]), str(position_2[1]), str(150)], stdout=subprocess.PIPE, shell=True)
+        ["adb", "-s", config.global_adb_port, "shell", "input", "touchscreen", "swipe", str(position_1[0]), str(position_1[1]), str(position_2[0]), str(position_2[1]), str(150)], stdout=subprocess.PIPE, shell=True)
 
 
 # Find and click if found a subimage

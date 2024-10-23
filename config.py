@@ -11,6 +11,8 @@ tmp_image_without_bg_path = tmp_path + \
     '\\hand_cards_number_without_background.png'
 tmp_hand_cards_number_path = tmp_path + '\\hand_cards_number.png'
 
+global_adb_port = '127.0.0.1:16384'
+
 first_field = {
     'name': 'First field',
     'x1': 610,

@@ -24,7 +24,7 @@ def click_possible_button(screenshot):
 def click_play_button(screenshot,screenshot_dimensions):
 
     if(global_utils.find_and_click(config.project_path+'\\images\\play_button.png', screenshot)):
-        time.sleep(10)
+        time.sleep(20)
         
     global_utils.find_and_click(
         config.project_path+'\\images\\next_button.png', screenshot)
@@ -57,8 +57,12 @@ def main(turns):
             player_turn = click_play_button(screenshot,screenshot_dimensions)
             
             if time.time() - start_time  > 15:
-                click_possible_button(screenshot)
-                print("Loop took too long, breaking out of loop")
+                if(mana.get_mana(screenshot, screenshot_dimensions) > 5) :
+                    player_turn = 6
+                    break
+                else:
+                    click_possible_button(screenshot)
+                    print("Loop took too long, breaking out of loop")
                 
 
 
