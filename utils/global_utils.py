@@ -64,6 +64,7 @@ def find_and_click(haystack_image_path, screenshot):
     search_haystack_image = search(haystack_image_path, screenshot)
     if search_haystack_image[0] == 1:
         click(search_haystack_image[1])
+        logging.info("* find img :" + str(haystack_image_path))
         return 1
     else:
         return 0
