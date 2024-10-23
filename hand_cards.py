@@ -72,14 +72,15 @@ def play_random_cards():
     for field in selected_fields:
         logging.info('* selected_fields : ' + str(field))
         for card in selected_cards:
-            global_utils.click([333, 333])
             global_utils.drag(config.possible_cards[card], config.possible_fields[field])
-            # global_utils.click([284, 800])
-            time.sleep(0.5)
+            time.sleep(0.1)
             
-    global_utils.click([770, 1500])
-    global_utils.click([450, 200])
-    global_utils.click([770, 1500])
+    # global_utils.click([770, 1500])
+    # global_utils.click([450, 200])
+    
+    global_utils.click([850, 1500])
+    time.sleep(1)
+    global_utils.click([790, 1490])
     
 
 

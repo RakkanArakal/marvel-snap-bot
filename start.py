@@ -23,7 +23,16 @@ def click_possible_button(screenshot):
 
 def click_play_button(screenshot,screenshot_dimensions):
 
-    if(global_utils.find_and_click(config.project_path+'\\images\\play_button.png', screenshot)):
+    if(global_utils.search(config.project_path+'\\images\\play_button.png', screenshot)[0]):
+        global_utils.click([520, 1500])
+        global_utils.click([580, 1550])
+        time.sleep(1)
+        global_utils.click([780, 1500])
+        global_utils.click([750, 1550])
+        time.sleep(1)
+        global_utils.click([450, 1560])
+        time.sleep(5)
+        global_utils.find_and_click(config.project_path+'\\images\\play_button.png', screenshot)
         time.sleep(20)
         
     global_utils.find_and_click(
@@ -49,14 +58,15 @@ def main(turns):
         player_turn = click_play_button(screenshot,screenshot_dimensions)
         
         # While turn not found
-        while player_turn == 0:
+        while 1:
             
             screenshot = global_utils.take_screenshot("tmp\\"+str(counter)+".png")
             screenshot_dimensions = screenshot.shape
             
             player_turn = click_play_button(screenshot,screenshot_dimensions)
-            
-            if time.time() - start_time  > 15:
+            if player_turn > 0 :
+                break
+            if time.time() - start_time > 15:
                 if(mana.get_mana(screenshot, screenshot_dimensions) > 5) :
                     player_turn = 6
                     break
@@ -73,17 +83,19 @@ def main(turns):
         # Play cards
         # last_move = hand_cards.play_cards(play_info, last_move)
         
+        if player_turn == 2:
+            global_utils.click([450, 200])
+        
         if player_turn == turns:
             # Auto concede
             global_utils.click([119, 1484])
             time.sleep(0.2)
             global_utils.click([290, 1165])
-        else:
+        
+        if mana.get_mana(screenshot, screenshot_dimensions) > 0:
             hand_cards.play_random_cards()
-            
-        # if(mana.get_mana(screenshot, screenshot_dimensions) > 5 and global_utils.find_and_click(
-        # config.project_path+'\\images\\\possible\\end_turn.png', screenshot)) :
-        #     hand_cards.play_random_cards()
+        else:
+            global_utils.click([800, 1520])
             
         counter += 1
         
@@ -100,4 +112,4 @@ if __name__ == "__main__":
 
     android_connection.connect()
     
-    main(6)
+    main(8)

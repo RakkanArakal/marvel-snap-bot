@@ -60,7 +60,9 @@ def click(position):
 # Swipe from a position a to a position b
 def drag(position_1, position_2):
     subprocess.call(
-        ["adb", "-s", config.global_adb_port, "shell", "input", "touchscreen", "swipe", str(position_1[0]), str(position_1[1]), str(position_2[0]), str(position_2[1]), str(150)], stdout=subprocess.PIPE, shell=True)
+        ["adb", "-s", config.global_adb_port, "shell", "input", "touchscreen", "swipe", str(position_1[0]), str(position_1[1]), 
+         str(position_2[0] + random.randint(-20,20)), str(position_2[1]+ random.randint(-20,20)), 
+         str(500 + random.randint(-100,100) )], stdout=subprocess.PIPE, shell=True)
 
 
 # Find and click if found a subimage
