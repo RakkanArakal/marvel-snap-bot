@@ -23,7 +23,7 @@ def get_my_hand_cards(screenshot, screenshot_dimensions, counter, show_image):
         for card_haystack in os.listdir(card_folder_path):
             card_needle = card_folder_path+"\\"+card_haystack
             card_location = pyautogui.locate(
-                card_needle, haystack, grayscale=True, confidence=0.6)
+                card_needle, haystack, grayscale=True, confidence=0.1)
             if card_location:
                 already_in_cards_array = False
                 for found_card in found_cards:
@@ -67,13 +67,19 @@ def play_a_card_to_a_field(card_position, field):
 
 # Play every card in hand to every possible field
 def play_random_cards():
-    for possible_card in config.possible_cards:
-        for possible_field in config.possible_fields:
-            global_utils.click([284, 46])
+    for possible_field in config.possible_fields:
+        if(random.random() < 0.5) :
+            continue
+        for possible_card in config.possible_cards:
+            global_utils.click([284, 800])
             global_utils.drag(possible_card, possible_field)
-            global_utils.click([284, 46])
+            global_utils.click([284, 800])
             time.sleep(0.2)
+            
     global_utils.click([770, 1500])
+    global_utils.click([450, 200])
+    global_utils.click([770, 1500])
+    
 
 
 # Play a certain card in hand to every possible field

@@ -1,5 +1,5 @@
-adb_path = 'D:\\JocsPC\\Nox\\bin'
-project_path = 'F:\\WebPages\\Bots\\marvelSnapBot'
+adb_path = 'C:/Program Files/Netease/MuMu Player 12/shell'
+project_path = 'C:\\Users\\HSL\\Desktop\\github\\marvel-snap-bot'
 images_folder = project_path + '\\images'
 fields_folder = images_folder + '\\fields'
 mana_folder = images_folder + '\\mana'
@@ -98,6 +98,12 @@ turn = {
     'y2': 50,
 }
 possible_fields = [[198, 1036], [455, 1036], [711, 1036]]
-possible_cards = [[290, 1300], [441, 1300],
-                  [517, 1300], [700, 1300],
-                  [100, 1300]]
+
+# possible_cards = [[290, 1300], [441, 1300],
+#                   [517, 1300], [700, 1300],
+#                   [100, 1300]]
+
+possible_cards = [[155, 1300], [255, 1300],
+                  [355, 1300], [455, 1300],
+                  [555, 1300], [655, 1300],
+                  [755, 1300]]

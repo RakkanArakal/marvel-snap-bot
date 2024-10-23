@@ -17,7 +17,7 @@ android_connection.connect()
 counter = 0
 last_move = [0, 0, 0]
 while 1:
-    global_utils.click([284, 46])
+    # global_utils.click([450, 200])
     # Take a screenhot and get its dimensions
     screenshot = global_utils.take_screenshot("tmp\\"+str(counter)+".png")
     screenshot_dimensions = screenshot.shape
@@ -72,7 +72,8 @@ while 1:
             counter, screenshot, screenshot_dimensions, player_turn)
 
         # Play cards
-        last_move = hand_cards.play_cards(play_info, last_move)
+        # last_move = hand_cards.play_cards(play_info, last_move)
+        hand_cards.play_random_cards()
 
     counter += 1
     # if False:

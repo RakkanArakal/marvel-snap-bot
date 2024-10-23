@@ -3,7 +3,7 @@ import os
 import cv2
 import config
 import random
-
+import time
 
 # Give a screenshot, returns the player turn
 def get_turn(screenshot, screenshot_dimensions, show_image):
@@ -31,10 +31,12 @@ def get_turn(screenshot, screenshot_dimensions, show_image):
                 if int(turn_haystack[0]) > actual_turn:
                     actual_turn = int(turn_haystack[0])
             elif turn_haystack[0] == 'f':
-                return -1
+                return 6
             else:
                 return -2
     end = global_utils.end_timer()
     global_utils.log_time_elapsed(
         "get_turn", end-start)
+    time.sleep(1)
+    
     return actual_turn
