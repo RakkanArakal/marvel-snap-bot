@@ -86,10 +86,11 @@ def main(turns):
         if player_turn == 2:
             global_utils.click([450, 200])
         
-        if player_turn == turns:
+        if player_turn >= turns:
             # Auto concede
+            time.sleep(5)
             global_utils.click([119, 1484])
-            time.sleep(0.2)
+            time.sleep(3)
             global_utils.click([290, 1165])
         
         if mana.get_mana(screenshot, screenshot_dimensions) > 0:
@@ -112,4 +113,5 @@ if __name__ == "__main__":
 
     android_connection.connect()
     
-    main(8)
+    main(4)
+    input("Press <enter>")

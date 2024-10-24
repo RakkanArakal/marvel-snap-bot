@@ -1,5 +1,5 @@
 adb_path = 'C:/Program Files/Netease/MuMu Player 12/shell'
-project_path = 'C:\\Users\\HSL\\Desktop\\github\\marvel-snap-bot'
+project_path = 'C:\\Users\\HSL\\Desktop\\github\\AutoBot\\marvel-snap-bot'
 images_folder = project_path + '\\images'
 fields_folder = images_folder + '\\fields'
 mana_folder = images_folder + '\\mana'

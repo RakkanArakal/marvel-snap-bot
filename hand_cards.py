@@ -72,6 +72,7 @@ def play_random_cards():
     for field in selected_fields:
         logging.info('* selected_fields : ' + str(field))
         for card in selected_cards:
+            logging.info('* selected_cards : ' + str(card))
             global_utils.drag(config.possible_cards[card], config.possible_fields[field])
             time.sleep(0.1)
             

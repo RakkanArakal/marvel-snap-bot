@@ -36,7 +36,7 @@ def get_turn(screenshot, screenshot_dimensions, show_image):
                 return -2
     end = global_utils.end_timer()
     global_utils.log_time_elapsed(
-        "get_turn", end-start)
+        "snap_get_turn", end-start)
     time.sleep(1)
     
     return actual_turn
