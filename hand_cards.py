@@ -67,21 +67,24 @@ def play_a_card_to_a_field(card_position, field):
 
 # Play every card in hand to every possible field
 def play_random_cards():
-    selected_fields = random.sample([0, 1, 2], 2)
-    selected_cards = random.sample([0, 1, 2, 3, 4, 5, 6], 5)
+    selected_fields = random.sample([0, 1, 2], 1)
+    selected_cards = random.sample([0, 1, 2, 3, 4, 5, 6], 1)
     for field in selected_fields:
         logging.info('* selected_fields : ' + str(field))
         for card in selected_cards:
             logging.info('* selected_cards : ' + str(card))
             global_utils.drag(config.possible_cards[card], config.possible_fields[field])
-            time.sleep(0.1)
+            # time.sleep(1)
+            # global_utils.drag(config.possible_cards[card], config.possible_fields[field])
+            # time.sleep(0.1)
+
             
     # global_utils.click([770, 1500])
     # global_utils.click([450, 200])
     
-    global_utils.click([850, 1500])
-    time.sleep(1)
-    global_utils.click([790, 1490])
+    # global_utils.click([850, 1500])
+    # time.sleep(1)
+    # global_utils.click([790, 1490])
     
 
 
